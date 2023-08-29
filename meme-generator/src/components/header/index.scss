@@ -1,0 +1,39 @@
+.headerContainer{
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+    background-color: aquamarine;
+    display: flex;
+    margin: -2px;
+    border: 2px solid black;
+    justify-content: space-between;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.memelogo{
+    width: 60%;
+    margin: 10px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: -6px 6px rgba(36, 36, 36, 0.563);
+}
+
+.createdDetails{
+    display: flex;
+    align-items: center;
+}
+
+.para{
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.845);
+    font-size: 16px;
+    margin-left: -30px;
+    font-weight: 400;
+    a{
+        font-size: larger;
+        font-weight: bolder;
+        font-style: normal;
+        color: rgba(0, 0, 0);
+        cursor: pointer;
+    }
+}

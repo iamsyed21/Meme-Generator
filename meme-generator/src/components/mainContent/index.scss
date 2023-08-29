@@ -1,0 +1,57 @@
+.contentContainer{
+    border: 3px solid black;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.my-form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+}
+  
+  .myInput {
+    padding: 4px;
+    margin: 4px;
+    border: 2px solid #ccc;
+    border-radius: 4px 4px 4px 4px;
+    text-indent: 4px;
+    flex: 1;
+  }
+  
+  .myButton {
+    width: 100%;
+    padding: 0;
+  }
+
+  .my-button{
+    width: 100%;
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-top: 4px;
+    background-color: aquamarine;
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    border: 3px solid black;
+    box-shadow: -6px 6px rgba(128, 128, 128, 0.523);
+  }
+  
+.memeImage{
+    max-width: 400px;
+    max-height: 400px;
+    padding: 10px;
+    object-fit: contain;
+}
