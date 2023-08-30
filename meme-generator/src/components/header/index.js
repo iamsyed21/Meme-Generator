@@ -9,7 +9,7 @@ const header = () =>{
             </div>
             <div className="createdDetails">
                 <p className="para">
-                    This App was created by <a rel="noreferrer" target="_blank" href = "https://syedmoinahmed.dev/"> Syed Moin Ahmed</a>
+                    Made with React
                         
                 </p>
             </div>

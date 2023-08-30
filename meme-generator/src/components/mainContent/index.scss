@@ -1,15 +1,13 @@
 .contentContainer{
-    border: 3px solid black;
-    height: 100%;
+
+    height: auto;
     width: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
-    overflow: scroll;
-    overflow-x: hidden;
+    
 }
 
 .my-form {
@@ -39,7 +37,7 @@
     width: 100%;
     padding: 4px 10px;
     border-radius: 8px;
-    margin-top: 4px;
+    margin-top: 14px;
     background-color: aquamarine;
     color: black;
     cursor: pointer;
@@ -51,7 +49,34 @@
   
 .memeImage{
     max-width: 400px;
-    max-height: 400px;
-    padding: 10px;
+    max-height: 300px;
+    padding: 0px;
     object-fit: contain;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: -6px 6px rgba(128, 128, 128, 0.323);
+    margin: 6px;
+}
+
+.download-button{
+   min-width: 60%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color:beige;
+    color: black;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    border: 3px solid black;
+    box-shadow: -6px 6px rgba(128, 128, 128, 0.523);
+}
+
+.name{
+  font-family:cursive;
+  color: black;
+  font-weight: 700;
+  text-decoration: overline;
+  padding: 2px;
 }

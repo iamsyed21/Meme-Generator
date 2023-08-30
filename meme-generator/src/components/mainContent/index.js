@@ -1,63 +1,67 @@
-import React, {useState} from 'react'
-import './index.scss'; 
-import Data from './data.js'
+import React, { useState, useEffect } from 'react';
+import './index.scss';
 
-const MainContent = () =>{
-    const [MemeData, setMemeData] = useState(null);
-    const [FirstInput, setFirstInput] = useState("");
-    const [SecondInput, setSecondInput] = useState("");
-   
-function handleClick(){
-    const randomNumber = Math.floor(Math.random()*Data.length);
-    const url = Data[randomNumber].url;
-    setMemeData(url);
-}
+const MainContent = () => {
+    const [memeData, setMemeData] = useState([]);
+    const [selectedMemeIndex, setSelectedMemeIndex] = useState(-1);
 
-function handleChange1(){
-    setFirstInput("Done");
-}
+    useEffect(() => {
+        async function fetchData() {
+            const res = await fetch("https://api.imgflip.com/get_memes");
+            const data = await res.json();
+            setMemeData(data.data.memes);
+        }
+        fetchData();
+    }, []);
 
-function handleChange2(){
-    setSecondInput("Done");
-}
+    function handleClick() {
+        if (memeData.length > 0) {
+            const newSelectedIndex = Math.floor(Math.random() * memeData.length);
+            setSelectedMemeIndex(newSelectedIndex);
+        }
+    }
 
-    return(
+    const handleDownloadClick = () => {
+        if (selectedMemeIndex !== -1) {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function () {
+                const canvas = document.createElement("canvas");
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+
+                const base64Image = canvas.toDataURL("image/png");
+                downloadURI(base64Image, 'meme.png');
+            };
+            img.src = memeData[selectedMemeIndex].url;
+        }
+    };
+
+    const downloadURI = (uri, name) => {
+        const link = document.createElement('a');
+        link.download = name;
+        link.href = uri;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    return (
         <div className="contentContainer">
             <div>
-                <form className="my-form">
-                    <div>
-                    <input
-                    type = "text"
-                    placeholder= "first prompt"
-                    onChange={handleChange1}
-                    className="myInput"
-                    />
-                    <input
-                    type = "text"
-                    onChange={handleChange2}
-                    placeholder= "second prompt"
-                    className="myInput"
-                    />
-                    </div>
-                    <div className="myButton">
-                  
-                    </div>
-                </form>
-
                 <button className="my-button" onClick={handleClick}>
-                    Generate Meme!!
-                    </button>
+                    Generate a Trending Meme Template
+                </button>
             </div>
-            {
-                MemeData && <img className='memeImage' alt="GeneratedMeme" src={MemeData} />    
-            }
-
-
-        
-            
+            <p className='p-2 pb-0 mt-2 fs-3 name'>{selectedMemeIndex !== -1 && memeData[selectedMemeIndex].name}</p>
+            {selectedMemeIndex !== -1 && <img className='memeImage' alt="GeneratedMeme" src={memeData[selectedMemeIndex].url} />}
+           {selectedMemeIndex !== -1 && <button className="download-button" onClick={handleDownloadClick}>
+                        Download Meme Template
+                    </button>}
         </div>
-    )
+    );
 }
-
 
 export default MainContent;
